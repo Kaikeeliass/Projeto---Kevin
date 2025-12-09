@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nutricionista & Fisiculturista - Kevin Lincoln</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-dark: #0b1d1a;
+      --bg-light: #f5f5f5;
+      --primary: #12a678;
+      --primary-soft: #1ec49433;
+      --accent: #d4af37;
+      --text-main: #f5f5f5;
+      --text-dark: #111111;
+      --muted: #bbbbbb;
+      --card-bg: #121f1c;
+      --border-soft: #ffffff22;
+      --radius-lg: 18px;
+      --radius-full: 999px;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.45);
+      --transition: all 0.25s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #152824, #050908 55%);
+      color: var(--text-main);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 100% - 2.5rem);
+      margin: 0 auto;
+    }
+
+    header {
+      position: fixed;
+      inset-inline: 0;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(5, 10, 9, 0.96), rgba(5, 10, 9, 0.7), transparent);
+      border-bottom: 1px solid #ffffff11;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0.5rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: "Poppins", system-ui;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 20%, var(--accent), var(--primary));
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .logo-text strong {
+      font-size: 1rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .logo-text span {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.2rem;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      border-radius: 999px;
+      transition: width 0.2s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.15rem;
+      border-radius: var(--radius-full);
+      border: 1px solid #ffffff33;
+      background: radial-gradient(circle at top left, #12a678aa, #12a67822);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav-cta span.icon {
+      font-size: 0.95rem;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: none;
+      background: none;
+      color: var(--text-main);
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    main {
+      padding-top: 92px;
+    }
+
+    section {
+      padding: 4.5rem 0 4rem;
+    }
+
+    .section-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: "Poppins", system-ui;
+      font-size: clamp(1.6rem, 2vw + 1rem, 2.1rem);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 560px;
+    }
+
+    .hero {
+      min-height: calc(100vh - 92px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: var(--radius-full);
+      background: #ffffff11;
+      border: 1px solid #ffffff22;
+      font-size: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-badge span.dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #37ff9a;
+      box-shadow: 0 0 12px rgba(55, 255, 154, 0.7);
+    }
+
+    .hero-title {
+      font-family: "Poppins", system-ui;
+      font-size: clamp(2.1rem, 2.6vw + 1.4rem, 2.9rem);
+      line-height: 1.1;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 520px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-bottom: 1.9rem;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .meta-item strong {
+      font-family: "Poppins", system-ui;
+      font-size: 1rem;
+    }
+
+    .meta-item span {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      align-items: center;
+    }
+
+    .btn-primary, .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.6rem;
+      border-radius: var(--radius-full);
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, var(--primary), #1ec494);
+      color: #ffffff;
+      box-shadow: 0 14px 35px rgba(9, 160, 110, 0.55);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 18px 40px rgba(9, 160, 110, 0.7);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: #ffffff33;
+      color: var(--muted);
+    }
+
+    .btn-ghost:hover {
+      background: #ffffff0a;
+    }
+
+    .btn-primary span.icon, .btn-ghost span.icon {
+      font-size: 1rem;
+    }
+
+    .hero-note {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 1.1rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-note span.badge {
+      padding: 0.1rem 0.55rem;
+      border-radius: var(--radius-full);
+      background: #ffffff11;
+      border: 1px solid #ffffff22;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-media {
+      position: relative;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: 26px;
+      background: radial-gradient(circle at 10% 0%, #12a67833, #050908);
+      border: 1px solid #ffffff18;
+      box-shadow: var(--shadow-soft);
+      padding: 1rem;
+      overflow: hidden;
+      min-height: 340px;
+    }
+
+    .hero-photo {
+      position: relative;
+      height: 280px;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid #ffffff11;
+      background: linear-gradient(160deg, #12a67833, #050908);
+      display: grid;
+      place-items: center;
+      color: #ffffff33;
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1.4rem;
+    }
+
+    .hero-photo span.placeholder-text {
+      max-width: 220px;
+    }
+
+    .hero-tag {
+      position: absolute;
+      top: 1.1rem;
+      left: 1.2rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: var(--radius-full);
+      background: #050908cc;
+      border: 1px solid #ffffff22;
+      font-size: 0.7rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-tag span.dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #37ff9a;
+    }
+
+    .hero-pill {
+      position: absolute;
+      bottom: 1.2rem;
+      right: 1.4rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 16px;
+      background: #050908e6;
+      border: 1px solid #ffffff33;
+      font-size: 0.7rem;
+      max-width: 170px;
+    }
+
+    .hero-pill strong {
+      display: block;
+      margin-bottom: 0.1rem;
+    }
+
+    .hero-floating {
+      position: absolute;
+      top: -10px;
+      right: -30px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle at 30% 30%, var(--accent), transparent 70%);
+      opacity: 0.55;
+      filter: blur(1px);
+      pointer-events: none;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 0.9rem;
+      font-size: 0.8rem;
+    }
+
+    .hero-stats span.label {
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    .hero-stats span.value {
+      display: block;
+      font-family: "Poppins", system-ui;
+      font-size: 0.95rem;
+    }
+
+    .story {
+      background: radial-gradient(circle at top, #101f1b, #050908);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2.4rem;
+      align-items: start;
+    }
+
+    .story-text p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .timeline {
+      margin-top: 1.5rem;
+      border-left: 1px solid #ffffff22;
+      padding-left: 1rem;
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .timeline-item {
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -1.25rem;
+      top: 0.35rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .timeline-year {
+      font-size: 0.78rem;
+      color: var(--accent);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
+    }
+
+    .timeline-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 0.1rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .story-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      background: #050908;
+      padding: 1.4rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .story-tagline {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .badge-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      font-size: 0.8rem;
+    }
+
+    .badge {
+      padding: 0.6rem 0.7rem;
+      border-radius: 12px;
+      background: #ffffff06;
+      border: 1px solid #ffffff14;
+    }
+
+    .badge span.label {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 0.05rem;
+    }
+
+    .badge strong {
+      font-size: 0.87rem;
+    }
+
+    .quote {
+      margin-top: 0.7rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-left: 2px solid var(--accent);
+      padding-left: 0.9rem;
+      font-style: italic;
+    }
+
+    .athlete {
+      background: #050908;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      background: #050908;
+      padding: 1.2rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      margin-bottom: 0.4rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .card-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(212, 175, 55, 0.1), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    .card:hover::after {
+      opacity: 1;
+    }
+
+    .services {
+      background: radial-gradient(circle at top, #101f1b, #050908);
+    }
+
+    .services-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2.2rem;
+      align-items: start;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .pill {
+      padding: 0.3rem 0.9rem;
+      border-radius: var(--radius-full);
+      background: #ffffff08;
+      border: 1px solid #ffffff16;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .service-cards {
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .service-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      background: #050908;
+      padding: 1rem 1.1rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .service-card strong {
+      display: block;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+      color: var(--text-main);
+    }
+
+    .service-meta {
+      margin-top: 0.5rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .service-highlight {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      background: #050908;
+      padding: 1.3rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .service-highlight strong {
+      color: var(--accent);
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .results {
+      background: #050908;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+    }
+
+    .testimonial {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      background: #050908;
+      padding: 1rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .testimonial p {
+      margin-bottom: 0.7rem;
+    }
+
+    .testimonial span {
+      font-size: 0.78rem;
+      color: var(--accent);
+    }
+
+    .plans {
+      background: radial-gradient(circle at top, #101f1b, #050908);
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+    }
+
+    .plan {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      background: #050908;
+      padding: 1.2rem 1.1rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .plan.featured {
+      border-color: var(--accent);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: 0.8rem;
+      right: 1rem;
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--radius-full);
+      background: #d4af3733;
+      border: 1px solid #d4af3785;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .plan-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .plan-price {
+      font-size: 0.9rem;
+      color: var(--accent);
+    }
+
+    .plan ul {
+      list-style: none;
+      padding-left: 0;
+      display: grid;
+      gap: 0.35rem;
+      font-size: 0.83rem;
+    }
+
+    .plan ul li::before {
+      content: "• ";
+      color: var(--primary);
+    }
+
+    .blog {
+      background: #050908;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+    }
+
+    .blog-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      background: #050908;
+      padding: 1rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .blog-card h3 {
+      font-size: 0.98rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-main);
+    }
+
+    .blog-meta {
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .contact {
+      background: radial-gradient(circle at bottom, #101f1b, #050908);
+    }
+
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2.2rem;
+      align-items: start;
+    }
+
+    .contact-text p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 1.1rem;
+    }
+
+    .contact-info {
+      display: grid;
+      gap: 0.7rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .contact-info span.label {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+    }
+
+    .contact-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      background: #050908;
+      padding: 1.2rem 1.1rem;
+    }
+
+    .contact-card form {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.3rem;
+      font-size: 0.83rem;
+    }
+
+    .field label {
+      color: var(--muted);
+    }
+
+    .field input,
+    .field textarea {
+      border-radius: 12px;
+      border: 1px solid #ffffff22;
+      background: #050908;
+      padding: 0.6rem 0.8rem;
+      color: var(--text-main);
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px var(--primary-soft);
+    }
+
+    .field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    footer {
+      padding: 1.6rem 0;
+      border-top: 1px solid #ffffff14;
+      background: #050908;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .whatsapp-floating {
+      position: fixed;
+      bottom: 1.4rem;
+      right: 1.4rem;
+      z-index: 60;
+    }
+
+    .whatsapp-btn {
+      width: 54px;
+      height: 54px;
+      border-radius: 999px;
+      border: none;
+      background: radial-gradient(circle at 30% 20%, #40f17e, #0c9f4b);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7);
+      cursor: pointer;
+      transition: var(--transition);
+      color: white;
+      font-size: 1.4rem;
+    }
+
+    .whatsapp-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 880px) {
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        right: 1.5rem;
+        background: #050908f2;
+        border-radius: 16px;
+        border: 1px solid #ffffff22;
+        padding: 0.9rem 1.1rem;
+        flex-direction: column;
+        gap: 0.8rem;
+        min-width: 180px;
+        transform: translateY(-10px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease, transform 0.2s ease;
+      }
+
+      .nav-links.open {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-media {
+        order: -1;
+      }
+
+      .story-grid,
+      .services-layout,
+      .contact-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .cards-grid,
+      .testimonials,
+      .plans-grid,
+      .blog-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      section {
+        padding-block: 3.4rem;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-title {
+        font-size: 1.9rem;
+      }
+
+      .hero-card {
+        min-height: 300px;
+      }
+
+      .badge-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-meta {
+        gap: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#inicio" class="logo">
+        <div class="logo-mark">K</div>
+        <div class="logo-text">
+          <strong>Kevin Lincoln</strong>
+          <span>Nutricionista & Atleta</span>
+        </div>
+      </a>
+
+      <nav>
+        <button class="menu-toggle" aria-label="Abrir menu">☰</button>
+        <div class="nav-links" id="navLinks">
+          <a href="#inicio">Início</a>
+          <a href="#historia">História</a>
+          <a href="#fisiculturismo">Fisiculturismo</a>
+          <a href="#servicos">Nutrição</a>
+          <a href="#resultados">Resultados</a>
+          <a href="#planos">Planos</a>
+          <a href="#conteudo">Conteúdo</a>
+          <a href="#contato">Contato</a>
+        </div>
+      </nav>
+
+      <a href="https://wa.me/SEU_NUMERO?text=Ol%C3%A1%2C+gostaria+de+agendar+uma+consulta" class="nav-cta" target="_blank" rel="noopener">
+        <span class="icon">💬</span>
+        <span>Agendar consulta</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section id="inicio" class="hero container">
+      <div class="hero-content reveal">
+        <div class="hero-badge">
+          <span class="dot"></span>
+          Nutrição • Performance • Fisiculturismo
+        </div>
+        <h1 class="hero-title">
+          Nutrição, performance e <span class="hero-highlight">resultados reais</span> para pessoas de verdade.
+        </h1>
+        <p class="hero-text">
+          Sou [Nome], nutricionista e atleta de fisiculturismo. Ajudo pessoas a conquistarem saúde, estética e
+          performance com estratégias simples, personalizadas e sustentáveis.
+        </p>
+
+        <div class="hero-meta">
+          <div class="meta-item">
+            <strong>+X anos</strong>
+            <span>de experiência em consultório</span>
+          </div>
+          <div class="meta-item">
+            <strong>+Y pacientes</strong>
+            <span>atendidos ao longo da jornada</span>
+          </div>
+          <div class="meta-item">
+            <strong>Preparação 20XX</strong>
+            <span>para competir no fisiculturismo</span>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn-primary" href="https://wa.me/SEU_NUMERO?text=Ol%C3%A1%2C+gostaria+de+agendar+uma+consulta" target="_blank" rel="noopener">
+            <span class="icon">💬</span>
+            <span>Agendar consulta pelo Whats</span>
+          </a>
+          <a class="btn-ghost" href="#historia">
+            <span class="icon">⟶</span>
+            <span>Conhecer sua história</span>
+          </a>
+        </div>
+
+        <div class="hero-note">
+          <span class="badge">Atendimento presencial e online</span>
+          <span>Planos personalizados para iniciantes e avançados.</span>
+        </div>
+      </div>
+
+      <div class="hero-media reveal">
+        <div class="hero-card">
+          <div class="hero-photo">
+            <span class="placeholder-text">
+              Espaço para uma foto profissional em alta qualidade do seu irmão (treino, consultório ou pose).
+            </span>
+            <div class="hero-floating"></div>
+            <div class="hero-tag">
+              <span class="dot"></span>
+              Em preparação para palco
+            </div>
+            <div class="hero-pill">
+              <strong>Nutrição na prática</strong>
+              <span>Atleta que vive no dia a dia o que passa para os pacientes.</span>
+            </div>
+          </div>
+
+          <div class="hero-stats">
+            <div>
+              <span class="label">Especialidade</span>
+              <span class="value">Nutrição esportiva e estética</span>
+            </div>
+            <div>
+              <span class="label">Atende</span>
+              <span class="value">Presencial e Online</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="historia" class="story">
+      <div class="container story-grid">
+        <div class="story-text reveal">
+          <div class="section-header">
+            <div class="section-kicker">História</div>
+            <h2 class="section-title">Uma trajetória construída com propósito.</h2>
+            <p class="section-subtitle">
+              Da curiosidade pela saúde à formação em Nutrição, da primeira consulta à preparação para o palco.
+              Cada capítulo dessa jornada trouxe aprendizado, disciplina e transformação.
+            </p>
+          </div>
+
+          <p>
+            Desde cedo, a saúde, o esporte e a alimentação faziam parte do meu cotidiano. Com o tempo, essa
+            curiosidade se tornou vocação: estudei, me formei em Nutrição e comecei a atender pessoas que, assim como
+            eu, buscavam se sentir melhor no corpo e na mente.
+          </p>
+          <p>
+            Nada aconteceu de forma perfeita ou linear. Foram anos de erros, acertos, ajustes e amadurecimento.
+            Mas, a cada paciente atendido e a cada resultado conquistado, a certeza de estar no caminho certo ficou mais
+            clara.
+          </p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-year">20XX</div>
+              <div class="timeline-title">Início da graduação em Nutrição</div>
+              <div class="timeline-desc">Primeiro contato profundo com ciência, fisiologia e bioquímica.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">20XX</div>
+              <div class="timeline-title">Primeiros atendimentos</div>
+              <div class="timeline-desc">Começo a acompanhar de perto as transformações reais dos pacientes.</div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-year">20XX</div>
+              <div class="timeline-title">Entrada no fisiculturismo</div>
+              <div class="timeline-desc">Levo a disciplina do esporte para dentro do consultório.</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="story-card reveal">
+          <div class="story-tagline">Nutrição que respeita história, contexto e objetivo.</div>
+
+          <div class="badge-grid">
+            <div class="badge">
+              <span class="label">Abordagem</span>
+              <strong>Estratégias personalizadas para cada fase da sua vida.</strong>
+            </div>
+            <div class="badge">
+              <span class="label">Foco</span>
+              <strong>Equilíbrio entre saúde, estética e performance.</strong>
+            </div>
+            <div class="badge">
+              <span class="label">Paciente</span>
+              <strong>Você é protagonista do processo, não o plano.</strong>
+            </div>
+            <div class="badge">
+              <span class="label">Resultado</span>
+              <strong>Transformações sustentáveis, sem fórmulas mágicas.</strong>
+            </div>
+          </div>
+
+          <p class="quote">
+            "Nutrição não é sobre sofrimento, e sim sobre consciência, estratégia e constância. Meu papel é caminhar ao
+            seu lado nesse processo."
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="fisiculturismo" class="athlete">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-kicker">Fisiculturismo</div>
+          <h2 class="section-title">A disciplina do palco aplicada à vida real.</h2>
+          <p class="section-subtitle">
+            O fisiculturismo exige planejamento, foco e constância. Essa experiência prática se transforma em
+            estratégia para quem busca performance no dia a dia, dentro ou fora da academia.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card reveal">
+            <div class="card-tag">Preparação</div>
+            <h3 class="card-title">Ciclo de preparação para competição</h3>
+            <p>
+              Períodos planejados de ganho de massa, refinamento e definição. Cada fase tem um objetivo claro,
+              tanto na dieta quanto no treino.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-tag">Rotina</div>
+            <h3 class="card-title">Disciplina além da estética</h3>
+            <p>
+              O palco é consequência. Por trás dele existem escolhas diárias, organização e respeito ao próprio corpo.
+            </p>
+          </article>
+
+          <article class="card reveal">
+            <div class="card-tag">Vivência</div>
+            <h3 class="card-title">Levo a prática para o consultório</h3>
+            <p>
+              A experiência como atleta me ajuda a entender o que funciona realmente para quem treina pesado e quer
+              ir além.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicos" class="services">
+      <div class="container services-layout">
+        <div class="reveal">
+          <div class="section-header">
+            <div class="section-kicker">Nutrição</div>
+            <h2 class="section-title">Consultas e planos pensados para a sua rotina.</h2>
+            <p class="section-subtitle">
+              Seja para iniciar uma mudança de hábitos ou para aperfeiçoar performance, cada consulta é construída a
+              partir da sua realidade.
+            </p>
+          </div>
+
+          <div class="pill-list">
+            <span class="pill">Emagrecimento saudável</span>
+            <span class="pill">Ganho de massa muscular</span>
+            <span class="pill">Performance esportiva</span>
+            <span class="pill">Reeducação alimentar</span>
+          </div>
+
+          <div class="service-cards">
+            <div class="service-card">
+              <strong>Consulta presencial</strong>
+              Avaliação completa, escuta ativa e construção de um plano alimentar alinhado com seu dia a dia.
+              <div class="service-meta">Local: [nome da clínica ou cidade]</div>
+            </div>
+            <div class="service-card">
+              <strong>Consulta online</strong>
+              Atendimento à distância, ideal para quem tem rotina corrida ou mora em outra cidade.
+              <div class="service-meta">Realizada por chamada de vídeo.</div>
+            </div>
+            <div class="service-card">
+              <strong>Acompanhamento mensal</strong>
+              Ajustes frequentes no plano, suporte contínuo e foco em manter a constância.
+              <div class="service-meta">Retornos combinados conforme a necessidade.</div>
+            </div>
+            <div class="service-card">
+              <strong>Plano Performance</strong>
+              Estratégias específicas para atletas e praticantes avançados de treino.
+              <div class="service-meta">Foco em composição corporal e recuperação.</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="service-highlight reveal">
+          <strong>Diferenciais no atendimento</strong>
+          <p>
+            • Plano alimentar adaptado à sua realidade: trabalho, estudos, família e treinos. <br />
+            • Estratégias baseadas em ciência, sem modismos extremos. <br />
+            • Experiência prática como atleta de fisiculturismo aplicada ao dia a dia dos pacientes. <br />
+            • Foco em resultado sustentável, e não em soluções de curto prazo.
+          </p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="resultados" class="results">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-kicker">Resultados</div>
+          <h2 class="section-title">Histórias reais, transformações reais.</h2>
+          <p class="section-subtitle">
+            Mais do que números na balança, cada resultado representa uma história, um processo e uma nova forma de se
+            enxergar.
+          </p>
+        </div>
+
+        <div class="testimonials">
+          <article class="testimonial reveal">
+            <p>
+              "Comecei achando que não conseguiria mudar meus hábitos. Hoje, além de me sentir melhor no espelho, tenho
+              energia para viver meu dia com muito mais disposição."
+            </p>
+            <span>— Paciente 01</span>
+          </article>
+
+          <article class="testimonial reveal">
+            <p>
+              "O plano foi adaptado à minha rotina, sem radicalismo. Foi a primeira vez que consegui manter a
+              alimentação organizada por tanto tempo."
+            </p>
+            <span>— Paciente 02</span>
+          </article>
+
+          <article class="testimonial reveal">
+            <p>
+              "A combinação de treino estruturado e nutrição estratégica mudou completamente minha performance na
+              academia e no dia a dia."
+            </p>
+            <span>— Paciente 03</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="planos" class="plans">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-kicker">Planos</div>
+          <h2 class="section-title">Escolha o formato que faz sentido para você.</h2>
+          <p class="section-subtitle">
+            Cada pessoa está em um momento da jornada. Os planos abaixo são um ponto de partida para facilitar seu
+            próximo passo.
+          </p>
+        </div>
+
+        <div class="plans-grid">
+          <article class="plan reveal">
+            <h3 class="plan-title">Plano Essencial</h3>
+            <p class="plan-price">Valor sob consulta</p>
+            <ul>
+              <li>1 consulta completa</li>
+              <li>Plano alimentar personalizado</li>
+              <li>Materiais de orientação</li>
+            </ul>
+          </article>
+
+          <article class="plan featured reveal">
+            <div class="plan-badge">Mais escolhido</div>
+            <h3 class="plan-title">Plano Acompanhamento</h3>
+            <p class="plan-price">Valor sob consulta</p>
+            <ul>
+              <li>Consulta inicial</li>
+              <li>Retornos mensais para ajustes</li>
+              <li>Suporte por mensagem em horários combinados</li>
+            </ul>
+          </article>
+
+          <article class="plan reveal">
+            <h3 class="plan-title">Plano Performance</h3>
+            <p class="plan-price">Valor sob consulta</p>
+            <ul>
+              <li>Foco em atletas e avançados</li>
+              <li>Planejamento por fases (off, pré, contest)</li>
+              <li>Estratégias alinhadas ao treino</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="conteudo" class="blog">
+      <div class="container">
+        <div class="section-header reveal">
+          <div class="section-kicker">Conteúdo</div>
+          <h2 class="section-title">Artigos e reflexões.</h2>
+          <p class="section-subtitle">
+            Alguns conteúdos para você entender um pouco mais da minha visão sobre alimentação, treino e rotina.
+          </p>
+        </div>
+
+        <div class="blog-grid">
+          <article class="blog-card reveal">
+            <div class="blog-meta">Nutrição • Leitura rápida</div>
+            <h3>Por que dietas extremas não funcionam no longo prazo?</h3>
+            <p>
+              Entenda por que o caminho do tudo ou nada costuma falhar e como construir uma estratégia possível para a
+              sua realidade.
+            </p>
+          </article>
+
+          <article class="blog-card reveal">
+            <div class="blog-meta">Performance • Fisiculturismo</div>
+            <h3>O que o fisiculturismo me ensinou sobre disciplina diária.</h3>
+            <p>
+              Reflexões sobre constância, planejamento e paciência no processo de evolução física.
+            </p>
+          </article>
+
+          <article class="blog-card reveal">
+            <div class="blog-meta">Rotina • Hábitos</div>
+            <h3>Pequenos ajustes que geram grandes mudanças.</h3>
+            <p>
+              Como começar com passos simples, sem transformar sua vida em algo impossível de manter.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="contact">
+      <div class="container contact-layout">
+        <div class="contact-text reveal">
+          <div class="section-header">
+            <div class="section-kicker">Contato</div>
+            <h2 class="section-title">Vamos começar a sua transformação?</h2>
+            <p class="section-subtitle">
+              Se você sente que é hora de cuidar da sua saúde, estética ou performance de forma estratégica e possível,
+              estou aqui para te acompanhar nesse processo.
+            </p>
+          </div>
+
+          <p>
+            Clique no botão de WhatsApp ou, se preferir, preencha o formulário ao lado para que eu entenda um pouco
+            mais do seu objetivo. Em seguida, entro em contato para alinhar o melhor caminho.
+          </p>
+
+          <div class="contact-info">
+            <div>
+              <span class="label">Atendimento</span>
+              Presencial em [Cidade/Clínica] e online para todo o Brasil.
+            </div>
+            <div>
+              <span class="label">WhatsApp</span>
+              <a href="https://wa.me/SEU_NUMERO" target="_blank" rel="noopener">Clique aqui para falar comigo.</a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="contact-card reveal">
+          <form onsubmit="event.preventDefault(); alert('Formulário demonstrativo. Use o WhatsApp para agendar.');">
+            <div class="field">
+              <label for="nome">Nome completo</label>
+              <input id="nome" type="text" placeholder="Como devo te chamar?" required />
+            </div>
+            <div class="field">
+              <label for="objetivo">Seu objetivo principal</label>
+              <input id="objetivo" type="text" placeholder="Ex: emagrecimento, ganho de massa, performance" />
+            </div>
+            <div class="field">
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" placeholder="Conte um pouco da sua rotina e o que você busca."></textarea>
+            </div>
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+              <span class="icon">✉</span>
+              <span>Enviar mensagem (demonstração)</span>
+            </button>
+          </form>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> [Nome]. Nutricionista & Fisiculturista. Todos os direitos reservados.</p>
+      <div class="footer-links">
+        <a href="#inicio">Início</a>
+        <a href="https://www.instagram.com/SEU_USER" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://wa.me/SEU_NUMERO" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="whatsapp-floating">
+    <a
+      class="whatsapp-btn"
+      aria-label="Falar no WhatsApp"
+      href="https://wa.me/SEU_NUMERO?text=Ol%C3%A1%2C+gostaria+de+agendar+uma+consulta"
+      target="_blank"
+      rel="noopener"
+    >
+      ⤴
+    </a>
+  </div>
+
+  <script>
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) {
+      yearSpan.textContent = new Date().getFullYear();
+    }
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.getElementById('navLinks');
+
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+    }
+
+    const navAnchors = document.querySelectorAll('header a[href^="#"], .nav-links a[href^="#"]');
+    navAnchors.forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        const href = anchor.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const yOffset = -80;
+          const rect = target.getBoundingClientRect();
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          const y = rect.top + scrollTop + yOffset;
+
+          window.scrollTo({ top: y, behavior: 'smooth' });
+          navLinks.classList.remove('open');
+        }
+      });
+    });
+
+    const revealElements = document.querySelectorAll('.reveal');
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.15,
+        }
+      );
+
+      revealElements.forEach((el) => observer.observe(el));
+    } else {
+      revealElements.forEach((el) => el.classList.add('visible'));
+    }
+  </script>
+</body>
+</html>
+```
+
